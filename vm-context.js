@@ -14,11 +14,11 @@
 			Object.assign(this, context);
 		}
 
-		createContext() {
+		initContext() {
 			return vm.createContext(this);
 		}
 
-		isContext() {
+		isInited() {
 			return vm.isContext(this);
 		}
 
@@ -32,7 +32,7 @@
 				return (options) =>
 					script.runInNewContext(this, options);
 			} else {
-				this.createContext();
+				this.initContext();
 				return (options) =>
 					script.runInContext(this, options);
 			}

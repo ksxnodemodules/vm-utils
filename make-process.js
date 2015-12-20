@@ -3,7 +3,7 @@
 	'use strict';
 
 	module.exports = (context, options) =>
-		context.process = options.process ? process : new FakeProcess(options);
+		context.process = options && options.process ? process : new FakeProcess(options);
 
 	class FakeProcess {
 

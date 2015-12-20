@@ -39,22 +39,22 @@
 		}
 
 		run(reset, options) {
-			return this.call(this.__source, reset, options);
+			return this.call(this.getSource(), reset, options);
 		}
 
 		getRun(reset, mutable) {
 			return mutable ?
 				this.run.bind(this, reset) :
-				this.getCall(this.__source, reset)
+				this.getCall(this.getSource(), reset)
 			;
 		}
 
-		get __source(options) {
+		getSource(options) {
 			return require('fs')
 				.readFileSync(this.__filename, options || 'utf8');
 		}
 
-		set __source(code, options) {
+		setSource(code, options) {
 			require('fs')
 				.writeFileSync(this.__filename, code, options);
 		}
